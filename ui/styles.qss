@@ -1,0 +1,80 @@
+/* Base Style for Dark Mode */
+QWidget {
+    background-color: #121212;
+    color: #E0E0E0;
+    font-family: "Segoe UI", "Roboto", sans-serif;
+    font-size: 14px;
+}
+
+/* Control Buttons */
+QPushButton {
+    background-color: #1E1E1E;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    padding: 8px 16px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #2D2D2D;
+    border: 1px solid #4D4D4D;
+}
+
+QPushButton:pressed {
+    background-color: #3D3D3D;
+}
+
+/* List Widget for Playlist */
+QListWidget {
+    background-color: #181818;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    outline: none;
+}
+
+QListWidget::item {
+    padding: 10px;
+    border-bottom: 1px solid #222222;
+}
+
+QListWidget::item:selected {
+    background-color: #2A2A2A;
+    color: #4DA8DA; /* Highlight color - Light Blue */
+}
+
+QListWidget::item:hover {
+    background-color: #222222;
+}
+
+/* Slider for Volume */
+QSlider::groove:horizontal {
+    border: 1px solid #333333;
+    height: 6px;
+    background: #1E1E1E;
+    border-radius: 3px;
+}
+
+QSlider::sub-page:horizontal {
+    background: #4DA8DA;
+    border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+    background: #FFFFFF;
+    border: 1px solid #4DA8DA;
+    width: 14px;
+    margin-top: -4px;
+    margin-bottom: -4px;
+    border-radius: 7px;
+}
+
+QSlider::handle:horizontal:hover {
+    background: #E0E0E0;
+}
+
+/* Labels */
+QLabel {
+    background-color: transparent;
+    color: #E0E0E0;
+}

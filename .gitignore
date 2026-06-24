@@ -1,0 +1,18 @@
+# Ignorar pasta com vídeos e áudios
+Musicas/
+
+# Pastas padrão do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambientes Virtuais
+venv/
+env/
+.venv/
+
+# Arquivos de IDE e Sistema Operacional
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
