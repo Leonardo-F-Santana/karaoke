@@ -1,4 +1,3 @@
-/* Base Style for Dark Mode */
 QWidget {
     background-color: #121212;
     color: #E0E0E0;
@@ -6,7 +5,6 @@ QWidget {
     font-size: 14px;
 }
 
-/* Control Buttons */
 QPushButton {
     background-color: #1E1E1E;
     border: 1px solid #333333;
@@ -25,7 +23,6 @@ QPushButton:pressed {
     background-color: #3D3D3D;
 }
 
-/* List Widget for Playlist */
 QListWidget {
     background-color: #181818;
     border: 1px solid #333333;
@@ -40,14 +37,13 @@ QListWidget::item {
 
 QListWidget::item:selected {
     background-color: #2A2A2A;
-    color: #4DA8DA; /* Highlight color - Light Blue */
+    color: #4DA8DA; 
 }
 
 QListWidget::item:hover {
     background-color: #222222;
 }
 
-/* Slider for Volume */
 QSlider::groove:horizontal {
     border: 1px solid #333333;
     height: 6px;
@@ -73,13 +69,11 @@ QSlider::handle:horizontal:hover {
     background: #E0E0E0;
 }
 
-/* Labels */
 QLabel {
     background-color: transparent;
     color: #E0E0E0;
 }
 
-/* Line Edit (Busca) */
 QLineEdit {
     background-color: #1E1E1E;
     border: 1px solid #333333;
