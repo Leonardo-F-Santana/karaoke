@@ -69,8 +69,7 @@ class ProjectorWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Karaoke Projetor")
-        self.setStyleSheet("background-color:
-
+        self.setStyleSheet("background-color: black;")
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
 
         self.layout = QVBoxLayout(self)
@@ -101,7 +100,7 @@ class ProjectorWindow(QWidget):
         font = QFont("Segoe UI", 36, QFont.Weight.Bold)
         self.idle_text.setFont(font)
         self.idle_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.idle_text.setStyleSheet()
+        self.idle_text.setStyleSheet("color: white;")
 
         from PyQt6.QtWidgets import QGraphicsDropShadowEffect
         shadow = QGraphicsDropShadowEffect()
@@ -152,7 +151,7 @@ class ProjectorWindow(QWidget):
             color = "#FFA500" 
             msg = "Bom!"
 
-        self.score_label.setStyleSheet(f"color: {color}; background-color:
+        self.score_label.setStyleSheet(f"color: {color}; background-color: transparent;")
         self.score_label.setText(f"{msg}\n\nSua Nota:\n{score}")
         self.score_label.setFont(QFont("Segoe UI", 48, QFont.Weight.Bold))
         self.score_label.show()
