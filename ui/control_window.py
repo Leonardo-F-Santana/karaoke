@@ -1,4 +1,5 @@
 import os
+import random
 from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton, 
                              QListWidget, QSlider, QFileDialog, QLabel, QLineEdit)
 from PyQt6.QtCore import Qt, QUrl
@@ -182,7 +183,15 @@ class ControlWindow(QWidget):
         self.audio_output.setVolume(value / 100.0)
             
     def media_status_changed(self, status):
-        """Se o vídeo terminar, volta para a tela de idle do projetor."""
+        """Se o vídeo terminar, mostra a pontuação e depois volta para a tela de idle do projetor."""
         if status == QMediaPlayer.MediaStatus.EndOfMedia:
-            self.btn_play.setText("Play")
-            self.projector.show_idle_screen()
+            self.btn_play.setText("Play / Pause")
+            
+            # Como não temos captação de microfone para evitar latência,
+            # a pontuação é randômica para fins de entretenimento, como em muitas máquinas clássicas.
+            score = random.randint(70, 100)
+            self.projector.show_score(score)
+            
+            # Mostra o placar por 5 segundos e depois volta à tela de espera
+            from PyQt6.QtCore import QTimer
+            QTimer.singleShot(5000, self.projector.show_idle_screen)
