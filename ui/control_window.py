@@ -1,6 +1,6 @@
 import os
 from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton, 
-                             QListWidget, QSlider, QFileDialog, QLabel)
+                             QListWidget, QSlider, QFileDialog, QLabel, QLineEdit)
 from PyQt6.QtCore import Qt, QUrl
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput
 
@@ -9,7 +9,7 @@ class ControlWindow(QWidget):
         super().__init__()
         self.projector = projector_window
         
-        self.setWindowTitle("Karaoke Control Panel")
+        self.setWindowTitle("Painel de Controle - KGS Karaoke")
         self.resize(600, 450)
         
         self.setup_ui()
@@ -17,6 +17,12 @@ class ControlWindow(QWidget):
         
     def setup_ui(self):
         layout = QVBoxLayout(self)
+        
+        # Campo de Busca
+        self.search_input = QLineEdit()
+        self.search_input.setPlaceholderText("Buscar vídeo por nome...")
+        self.search_input.textChanged.connect(self.filter_playlist)
+        layout.addWidget(self.search_input)
         
         # Lista de Reprodução (Fila)
         self.playlist_widget = QListWidget()
@@ -88,6 +94,11 @@ class ControlWindow(QWidget):
             if file_path:
                 item_text = os.path.basename(file_path)
                 
+                # Verifica se a música já foi adicionada para evitar duplicatas
+                existing_items = self.playlist_widget.findItems(item_text, Qt.MatchFlag.MatchExactly)
+                if existing_items:
+                    continue # Pula para o próximo arquivo se este já existir
+                
                 # Devido ao setSortingEnabled(True), isso já insere na posição alfabética correta
                 self.playlist_widget.addItem(item_text)
                 
@@ -100,6 +111,14 @@ class ControlWindow(QWidget):
                         })
                         break
             
+    def filter_playlist(self, text):
+        """Filtra a lista de vídeos de acordo com a busca do usuário."""
+        search_term = text.lower()
+        for i in range(self.playlist_widget.count()):
+            item = self.playlist_widget.item(i)
+            # Exibe o item se a busca for vazia ou se o termo estiver no nome
+            item.setHidden(search_term not in item.text().lower())
+
     def remove_music(self):
         """Remove o vídeo selecionado da fila."""
         current_row = self.playlist_widget.currentRow()

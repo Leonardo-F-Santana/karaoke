@@ -78,3 +78,16 @@ QLabel {
     background-color: transparent;
     color: #E0E0E0;
 }
+
+/* Line Edit (Busca) */
+QLineEdit {
+    background-color: #1E1E1E;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    padding: 8px;
+    color: #FFFFFF;
+}
+
+QLineEdit:focus {
+    border: 1px solid #4DA8DA;
+}
